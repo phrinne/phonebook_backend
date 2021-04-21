@@ -1,0 +1,37 @@
+GET https://afternoon-springs-87725.herokuapp.com/api/persons
+###
+GET https://afternoon-springs-87725.herokuapp.com/api/persons/2
+###
+GET https://afternoon-springs-87725.herokuapp.com/api/persons/666
+###
+DELETE https://afternoon-springs-87725.herokuapp.com/api/persons/3
+###
+POST https://afternoon-springs-87725.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Arto Bryggare",
+    "number": "666-777"
+}
+###
+POST https://afternoon-springs-87725.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "number": "666-777"
+}
+###
+POST https://afternoon-springs-87725.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Arto Bryggare"
+}
+###
+POST https://afternoon-springs-87725.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Ada Lovelace",
+    "number": "666-777"
+}
