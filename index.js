@@ -43,7 +43,7 @@ app.get('/api/persons', (request, response) => {
 app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     const person = persons.find(p => p.id === id)
-    if(person) {
+    if (person) {
         response.json(person)
     } else {
         response.status(404).end()
@@ -53,19 +53,42 @@ app.get('/api/persons/:id', (request, response) => {
 app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     persons = persons.filter(p => p.id !== id)
-  
+
     response.status(204).end()
 })
 
+const nameExists = (name) => {
+    const names = persons.map(p => p.name)
+    return names.find(n => n === name)
+}
+const generateNewId = () => {
+    return Math.floor(Math.random() * 10000) + persons.length
+}
+
 app.post('/api/persons', (request, response) => {
     const person = request.body
-    person.id = Math.floor(Math.random() * 10000) + 4
-    persons = persons.concat(person)
+    if (!person.name) {
+        return response.status(400).json({
+            error: 'Name missing'
+        })
+    }
+    if (!person.number) {
+        return response.status(400).json({
+            error: 'Number missing'
+        })
+    }
+    if (nameExists(person.name)) {
+        return response.status(400).json({
+            error: 'name must be unique'
+        })
+    }
 
+    person.id = generateNewId()
+    persons = persons.concat(person)
     response.json(person)
 })
 
 const PORT = 3001
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
 })
