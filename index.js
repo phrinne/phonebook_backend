@@ -28,6 +28,13 @@ app.get('/', (request, response) => {
     response.send('Nothing to see here, only (g)root.')
 })
 
+app.get('/info', (request, response) => {
+    const phonebookSize = persons.length;
+    const timeStamp = new Date();
+
+    response.send(`Phonebook has info for ${phonebookSize} people.<br/><br/>${timeStamp}`)
+})
+
 app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
