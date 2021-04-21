@@ -2,9 +2,30 @@ const express = require('express')
 var morgan = require('morgan')
 
 const app = express()
-
 app.use(express.json())
-app.use(morgan('tiny'))
+
+morgan.token('body', (request, response) => JSON.stringify(request.body))
+
+//POST using body token to show content of person
+app.use(morgan(
+    ':method :url :status :res[content-length] - :response-time ms :body',
+    {
+        skip: function (req, res) { 
+            const { method, url } = req
+            return method !== 'POST' 
+        }
+    }
+))
+//Everything but POST using 'tiny' format
+app.use(morgan(
+    'tiny',
+    {
+        skip: function (req, res) { 
+            const { method, url } = req
+            return method === 'POST' 
+        }
+    }
+))
 
 let persons = [
     {
