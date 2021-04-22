@@ -4,11 +4,11 @@ GET http://localhost:3001/api/persons/2
 ###
 GET http://localhost:3001/api/persons/666
 ###
-GET http://localhost:3001/api/persons/60818c07c21e27f1518f69d9
+GET http://localhost:3001/api/persons/6081c54cbb1c2bff28c4160b
 ###
 DELETE http://localhost:3001/api/persons/3
 ###
-DELETE http://localhost:3001/api/persons/6081b8b3b32383f93c942bbc
+DELETE http://localhost:3001/api/persons/6081c1363e4d57fd5f7bf4eb
 ###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
@@ -46,4 +46,12 @@ Content-Type: application/json
 {
     "name": "Bat Man",
     "number": "0700-123123"
+}
+###
+PUT http://localhost:3001/api/persons/6081c54cbb1c2bff28c4160b
+Content-Type: application/json
+
+{
+    "name": "Bat Man",
+    "number": "1337-1337-1337"
 }
