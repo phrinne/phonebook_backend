@@ -9,13 +9,14 @@
     "dev": "nodemon index.js",
     "build:ui": "rm -rf build && cd ../../FullStackOpen_PauliRinne/part2/phonebook/ && npm run build --prod && cp -r build ../../FullStackOpen_part3/phonebook_backend",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "author": "Pauli Rinne",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.12.5",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
