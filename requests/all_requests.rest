@@ -8,6 +8,8 @@ GET http://localhost:3001/api/persons/60818c07c21e27f1518f69d9
 ###
 DELETE http://localhost:3001/api/persons/3
 ###
+DELETE http://localhost:3001/api/persons/6081b8b3b32383f93c942bbc
+###
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
@@ -36,4 +38,12 @@ Content-Type: application/json
 {
     "name": "Ada Lovelace",
     "number": "666-777"
+}
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Bat Man",
+    "number": "0700-123123"
 }
