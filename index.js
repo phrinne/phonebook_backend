@@ -9,12 +9,12 @@ app.use(express.static('build'))
 
 //Morgan
 //POST using body token to show content of person
-morgan.token('body', (request, response) => JSON.stringify(request.body))
+morgan.token('body', (request) => JSON.stringify(request.body))
 app.use(morgan(
     ':method :url :status :res[content-length] - :response-time ms :body',
     {
-        skip: function (req, res) {
-            const { method, url } = req
+        skip: function (req) {
+            const { method } = req
             return method !== 'POST'
         }
     }
@@ -23,8 +23,8 @@ app.use(morgan(
 app.use(morgan(
     'tiny',
     {
-        skip: function (req, res) {
-            const { method, url } = req
+        skip: function (req) {
+            const { method } = req
             return method === 'POST'
         }
     }
@@ -36,7 +36,7 @@ app.get('/', (request, response) => {
 
 app.get('/info', (request, response) => {
     Person.find({}).then(result => {
-        const phonebookSize = result.length;
+        const phonebookSize = result.length
         const timeStamp = new Date()
         response.send(`Phonebook has info for ${phonebookSize} people.<br/><br/>${timeStamp}`)
     })
@@ -74,9 +74,7 @@ app.post('/api/persons', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
     Person.findByIdAndRemove(request.params.id)
-        .then(result => {
-            response.status(204).end()
-        })
+        .then(() => response.status(204).end())
         .catch(error => next(error))
 })
 
