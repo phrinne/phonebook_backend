@@ -52,7 +52,6 @@ app.get('/api/persons/:id', (request, response, next) => {
             if (person) {
                 response.json(person)
             } else {
-                //person was already removed from server
                 response.status(404).end()
             }
         })
@@ -86,6 +85,7 @@ app.put('/api/persons/:id', (request, response, next) => {
             if(updatedPerson) {
                 response.json(updatedPerson)
             } else {
+                //person was already removed from server
                 response.status(404).end()
             }
         })
