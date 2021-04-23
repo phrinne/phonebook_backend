@@ -53,5 +53,13 @@ Content-Type: application/json
 
 {
     "name": "Bat Man",
-    "number": "1337-1337-1337"
+    "number": "1337"
+}
+###
+PUT http://localhost:3001/api/persons/6081c54cbb1c2bff28c4160b
+Content-Type: application/json
+
+{
+    "name": "Bat Man",
+    "number": "123456789"
 }
